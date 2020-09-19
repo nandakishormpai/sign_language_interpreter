@@ -51,7 +51,7 @@ labels = np_utils.to_categorical(labels)
 
 
 model = Sequential()
-model.add(SqueezeNet(input_shape=(250, 250, 3), include_top=False))
+model.add(SqueezeNet(input_shape=(200, 200, 3), include_top=False))
 model.add(Dropout(0.4))
 model.add(Conv2D(32, (1, 1), padding='valid', activation='relu'))
 model.add(GlobalAveragePooling2D())
@@ -61,5 +61,6 @@ model.add(Dense(NUM_CLASSES, activation='softmax'))
 
 model.compile(optimizer=Adam(lr=0.0001),loss='categorical_crossentropy',  metrics=['accuracy'])
 
-model.fit(np.array(data), np.array(labels), epochs=10, verbose=2)
+model.fit(np.array(data), np.array(labels), epochs=10, verbose=1)
 model.save("RPS-model.h5")
+
