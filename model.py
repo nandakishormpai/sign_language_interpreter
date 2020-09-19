@@ -6,6 +6,7 @@ from keras.optimizers import Adam
 from tensorflow.python.keras.utils import np_utils
 from keras.layers import Dropout, GlobalAveragePooling2D, Conv2D, Dense,   MaxPooling2D, Flatten
 from keras.models import Sequential
+import tensorflow as tf
 
 
 IMG_SAVE_PATH = os.path.join("asl_alphabet_train","asl_alphabet_train")
@@ -36,31 +37,38 @@ for directory in os.listdir(IMG_SAVE_PATH):
     path = os.path.join(IMG_SAVE_PATH, directory)
     if not os.path.isdir(path):
         continue
+    if len(dataset)>0:
+      print(dataset[-1][0],"\n")
     for item in os.listdir(path):
 
         if item.startswith("."):
             continue
         img = cv2.imread(os.path.join(path, item))
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        img = cv2.resize(img, (200, 200))
+        img = cv2.resize(img, (100, 100))
         dataset.append([img, directory])
 
 data, labels = zip(*dataset)
+if(len(data)==0):
+  print("bug")
+  break
 labels = list(map(code_conv, labels))
 labels = np_utils.to_categorical(labels)
 
 
 model = Sequential()
-model.add(SqueezeNet(input_shape=(200, 200, 3), include_top=False))
+model.add(SqueezeNet(input_shape=(100, 100, 3), include_top=False))
 model.add(Dropout(0.4))
-model.add(Conv2D(32, (1, 1), padding='valid', activation='relu'))
+model.add(Conv2D(4, (1, 1), padding='valid', activation='relu'))
 model.add(GlobalAveragePooling2D())
 model.add(Dense(NUM_CLASSES, activation='softmax'))
 
-# print(model.summary())
+print(model.summary())
 
-model.compile(optimizer=Adam(lr=0.0001),loss='categorical_crossentropy',  metrics=['accuracy'])
+model = model.compile(optimizer=Adam(lr=0.0001),loss='categorical_crossentropy',  metrics=['accuracy'])
+print("\n done\n")
 
-model.fit(np.array(data), np.array(labels), epochs=10, verbose=1)
+
+model.fit(np.array(data), np.array(labels), epochs=10, verbose=1)                               
+
 model.save("RPS-model.h5")
-
