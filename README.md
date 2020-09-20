@@ -27,6 +27,8 @@ This section should list any major frameworks that you built your project using.
 ## Contributors 
 * [Nanda Kishor M Pai](https://github.com/nandakishormpai2001)
 * [Muhammad Haseeb Kamal](https://github.com/CrimsonScythe)
+* [Athul Cyriac Ajay](https://github.com/athul)
+* [Antony S John](https://github.com/AntonySJohn)
 
 
 
