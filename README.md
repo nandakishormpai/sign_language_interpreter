@@ -17,9 +17,9 @@ We decided to make a Sign Language Translator as we felt it as a socially releva
 Here are the  resources that we found helpful are listed in the acknowledgements.
 
 ## Demo
- click this logo 
+ click this 
  
-[![Watch the video](https://github.com/nandakishormpai2001/sign_language_interpreter/blob/master/logo/hack.png)](https://youtu.be/Tl1U0c9EY70)
+[![Watch the video](http://img.youtube.com/vi/Tl1U0c9EY70/0.jpg)](https://youtu.be/Tl1U0c9EY70)
 
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
