@@ -17,7 +17,8 @@ We decided to make a Sign Language Translator as we felt it as a socially releva
 Here are the  resources that we found helpful are listed in the acknowledgements.
 
 ## Demo
-
+ click this logo 
+ 
 [![Watch the video](https://github.com/nandakishormpai2001/sign_language_interpreter/blob/master/logo/hack.png)](https://youtu.be/Tl1U0c9EY70)
 
 ### Built With
