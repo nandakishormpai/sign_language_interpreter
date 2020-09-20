@@ -12,7 +12,7 @@
 ## About The Project
 
 This project was initialised during Hack MIT 2020 , Sep 19-20 2020.
-We decided to make a Sign Language Translator as we felt it as a socially relevant and technically feasible objective. We got a well diverse dataset form kaggle and we started building a CNN neurla net and accomplihed a model that can understand all the alphabets used in ASL and can help the other person communicate with deaf people. Real time prediction makes this project usable in our lives. Integration with Flask to host this a web app for others to access escalated the usability.
+We decided to make a Sign Language Translator as we felt it as a socially relevant and technically feasible objective. We got a well diverse dataset form kaggle and we started building a CNN and built a model that can understand all the alphabets used in ASL and can help the other person communicate with deaf people. Real time prediction makes this project useful in our lives. Integration with Flask to host this as a web app for others to access escalated the usability.
 
 
 Here are the  resources that we found helpful are listed in the acknowledgements.
@@ -64,9 +64,9 @@ Contributions are what make the open source community such an amazing place to b
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/othneildrew/sign_language_interpreter.svg?style=flat-square
+[contributors-shield]: https://github.com/nandakishormpai2001/sign_language_interpreter/github-readme-stats/contributors
 [contributors-url]: https://github.com/nandakishormpai2001/sign_language_interpreter/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/othneildrew/sign_language_interpreter.svg?style=flat-square
+[forks-shield]: https://github.com/nandakishormpai2001/sign_language_interpreter/github-readme-stats/contributors
 [forks-url]: https://github.com/nandakishormpai2001/sign_language_interpreter/network/members
 [stars-shield]: https://img.shields.io/github/stars/othneildrew/sign_language_interpreter.svg?style=flat-square
 [stars-url]: https://github.com/nandakishormpai2001/sign_language_interpreter/stargazers
