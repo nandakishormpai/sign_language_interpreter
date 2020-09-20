@@ -1,17 +1,9 @@
-
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stars][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-
-
-
-
+# Sign Language Interpreter
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This project was initialised during Hack MIT 2020 , Sep 19-20 2020.
+This project was initialised during Hack MIT 2020 .
 We decided to make a Sign Language Translator as we felt it as a socially relevant and technically feasible objective. We got a well diverse dataset form kaggle and we started building a CNN and built a model that can understand all the alphabets used in ASL and can help the other person communicate with deaf people. Real time prediction makes this project useful in our lives. Integration with Flask to host this as a web app for others to access escalated the usability.
 
 
@@ -31,6 +23,10 @@ This section should list any major frameworks that you built your project using.
 ## Visit Our Website 
 [demo](https://example.com)
 
+
+## Contributors 
+[Nanda Kishor M Pai](https://github.com/nandakishormpai2001)
+[Kamal](https://github.com/CrimsonScythe)
 
 
 
@@ -61,14 +57,3 @@ Contributions are what make the open source community such an amazing place to b
 
 
 
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://github.com/nandakishormpai2001/sign_language_interpreter/github-readme-stats/contributors
-[contributors-url]: https://github.com/nandakishormpai2001/sign_language_interpreter/graphs/contributors
-[forks-shield]: https://github.com/nandakishormpai2001/sign_language_interpreter/github-readme-stats/contributors
-[forks-url]: https://github.com/nandakishormpai2001/sign_language_interpreter/network/members
-[stars-shield]: https://img.shields.io/github/stars/othneildrew/sign_language_interpreter.svg?style=flat-square
-[stars-url]: https://github.com/nandakishormpai2001/sign_language_interpreter/stargazers
-[issues-shield]: https://img.shields.io/github/issues/othneildrew/sign_language_interpreter.svg?style=flat-square
-[issues-url]: https://github.com/nandakishormpai2001/sign_language_interpreter/issues
