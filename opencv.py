@@ -4,7 +4,7 @@ import cv2
 import time
 
 np.set_printoptions(suppress=True)
-model = tensorflow.keras.models.load_model("model.h5")
+model = tensorflow.keras.models.load_model("primary_model.h5")
 
 #  0_Rock  1_Paper  2_Scissors  3_YourTurn
 
@@ -28,6 +28,12 @@ for i in range (1,27):
 CODES[27]="del"
 CODES[28]="space"
 
+start = time.time()
+end = time.time()
+final=""
+check = 0.0
+words=[]
+prev_move="del"
 while True:
     font = cv2.FONT_HERSHEY_SIMPLEX
     ret, frame = img.read()
@@ -46,10 +52,25 @@ while True:
 
 
     move_code = CODES[np.argmax(pred[0])]
+    '''
+    if(prev_move==move_code):
+        end=time.time()
+        if(int(end-start)>2):
+            if (move_code=="space"):
+                final=''.join(words)
+                print("\n",''.join(words))
+                words = []
+            elif(move_code=="del"):
+                words=words[:-1]
+            elif (move_code!="nothing"):
+                words.append(move_code)
+            start=time.time()
 
-    start = time.time()
-    end = time.time()
-    check = 0.0
+    cv2.putText(frame,  "Letter : {}".format(final), (200, 200),font, 1, (0, 0, 0), 2, cv2.LINE_AA)
+                    
+    prev_move = move_code
+
+    '''
     gate = 1
     window_width = 1200
     window_height = 820
@@ -62,10 +83,6 @@ while True:
     frame = cv2.rectangle(frame, (60, 100), (310, 350), (0, 0, 255), 3)
     cv2.putText(frame,  "Letter : {}".format(move_code), (63, 320),
             font, 1, (0, 0, 0), 2, cv2.LINE_AA)
-
-
-
-
 
 
     result = cv2.imread(s[3])
