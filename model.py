@@ -57,26 +57,14 @@ labels = np_utils.to_categorical(labels)
 
 
 model = Sequential()
-
-model.add(Conv2D(64, kernel_size=4, strides=1, activation='relu', input_shape=(50,50,3)))
-model.add(Conv2D(64, kernel_size=4, strides=2, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Conv2D(128, kernel_size=4, strides=1, activation='relu'))
-model.add(Conv2D(128, kernel_size=4, strides=2, activation='relu'))
-model.add(Dropout(0.5))
-model.add(Conv2D(256, kernel_size=4, strides=1, activation='relu'))
-model.add(Conv2D(256, kernel_size=4, strides=2, activation='relu'))
-model.add(Flatten())
-model.add(Dropout(0.5))
-model.add(Dense(512, activation='relu'))
+model.add(SqueezeNet(input_shape=(50, 50, 3), include_top=False))
+model.add(Dropout(0.4))
+model.add(Conv2D(32, (1, 1), padding='valid', activation='relu'))
+model.add(GlobalAveragePooling2D())
 model.add(Dense(NUM_CLASSES, activation='softmax'))
 
 print(model.summary())
+model.compile(optimizer=Adam(lr=0.0001),loss='categorical_crossentropy',  metrics=['accuracy'])
+model.fit(np.array(data), np.array(labels), batch_size=16, epochs=10, verbose=1)                  
 
-model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
-print("\n done \n")
-
-
-model.fit(np.array(data), np.array(labels), batch_size=64, epochs=10, verbose=1)                   
-
-model.save("RPS-model.h5")
+model.save("my-model.h5")
