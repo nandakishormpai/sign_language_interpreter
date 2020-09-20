@@ -9,6 +9,10 @@ We decided to make a Sign Language Translator as we felt it as a socially releva
 
 Here are the  resources that we found helpful are listed in the acknowledgements.
 
+## Demo
+
+[![Watch the video](https://img.youtube.com/vi/T-D1KVIuvjA/maxresdefault.jpg)](https://youtu.be/T-D1KVIuvjA)
+
 ### Built With
 This section should list any major frameworks that you built your project using. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 * [Python](https://www.python.org/)
