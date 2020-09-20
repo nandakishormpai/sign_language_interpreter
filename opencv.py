@@ -34,8 +34,8 @@ while True:
     frame = cv2.flip(frame, 1)
 
 
-    frame = cv2.rectangle(frame, (320, 100), (570, 350), (0, 0, 255), 3)
-    frame2 = frame[100:350, 320:570]
+    frame = cv2.rectangle(frame, (60, 100), (310, 350), (0, 0, 255), 3)
+    frame2 = frame[100:350, 60:310]
     image = cv2.cvtColor(frame2, cv2.COLOR_BGR2RGB)
     image = cv2.resize(image, (50, 50))
     pred = model.predict(np.array([image]))
@@ -59,13 +59,10 @@ while True:
     ret, frame = img.read()
 
     frame = cv2.flip(frame, 1)
-    frame = cv2.rectangle(frame, (320, 100), (570, 350), (0, 0, 255), 3)
-    cv2.putText(frame,  "----------", (3, 87),
+    frame = cv2.rectangle(frame, (60, 100), (310, 350), (0, 0, 255), 3)
+    cv2.putText(frame,  "Letter : {}".format(move_code), (63, 320),
             font, 1, (0, 0, 0), 2, cv2.LINE_AA)
-    cv2.putText(frame,  "Letter : {}".format(move_code), (25, 117),
-            font, 1, (0, 0, 0), 2, cv2.LINE_AA)
-    cv2.putText(frame,  "----------", (3, 187),
-            font, 1, (0, 0, 0), 2, cv2.LINE_AA)
+
 
 
 
