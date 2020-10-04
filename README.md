@@ -62,7 +62,6 @@ Contributions are what make the open source community such an amazing place to b
 <!-- ACKNOWLEDGEMENTS -->
 ## Acknowledgements
 * [ASL Dataset](https://www.kaggle.com/grassknoted/asl-alphabet)
-* [README Template](https://github.com/othneildrew/Best-README-Template)
 
 
 
