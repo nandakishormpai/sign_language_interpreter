@@ -18,7 +18,7 @@ import tensorflow as tf
 from tensorflow.keras import layers
 
 #Inputting Train Data source
-IMG_SAVE_PATH = os.path.join("asl_alphabet_train","asl_alphabet_train")
+IMG_SAVE_PATH = "asl_alphabet_train"
 
 CODES = {"nothing": 0}
 

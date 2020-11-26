@@ -9,10 +9,11 @@ opencv.py : to predict sign language alphabets using the deep learning model we 
 import tensorflow
 import numpy as np
 from model import make_labels
+import os
 import cv2
 
 np.set_printoptions(suppress=True)
-model = tensorflow.keras.models.load_model("primary_model.h5")
+model = tensorflow.keras.models.load_model(os.path.join("models","primary_model.h5"))
 
 def main():
     # Setting default cam to webcam and necesseary variables
