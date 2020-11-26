@@ -1,97 +1,74 @@
+"""
+
+Nanda Kishor M Pai
+
+opencv.py : to predict sign language alphabets using the deep learning model we built
+
+"""
+
 import tensorflow
 import numpy as np
+from model import make_labels
 import cv2
-import time
 
 np.set_printoptions(suppress=True)
 model = tensorflow.keras.models.load_model("primary_model.h5")
 
-#  0_Rock  1_Paper  2_Scissors  3_YourTurn
+def main():
+    # Setting default cam to webcam and necesseary variables
+    img = cv2.VideoCapture(0)
+    data = np.ndarray(shape=(1, 250, 250, 3), dtype=np.float32)
+    exit = False
 
-s = ["images/0.png", "images/1.png", "images/2.png", "images/3.jfif"]
+    #labelling data
+    CODES = {
+        0: "nothing"
+    }
+    alpha="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    for i in range (1,27):
+        CODES[i]=alpha[i-1]
 
-# Setting default cam to webcam and necesseary variables
-img = cv2.VideoCapture(0)
-data = np.ndarray(shape=(1, 250, 250, 3), dtype=np.float32)
-firsttime = False
-exit = False
+    CODES[27]="del"
+    CODES[28]="space"
 
+    while True:
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        ret, frame = img.read()
+        frame = cv2.flip(frame, 1)
 
-CODES = {
-    0: "nothing"
-}
+        #defining frame to be used
+        frame = cv2.rectangle(frame, (60, 100), (310, 350), (0, 0, 255), 3)
+        frame2 = frame[100:350, 60:310]
+        image = cv2.cvtColor(frame2, cv2.COLOR_BGR2RGB)
+        image = cv2.resize(image, (50, 50))
+        pred = model.predict(np.array([image]))
 
-alpha="ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-for i in range (1,27):
-    CODES[i]=alpha[i-1]
+        #predicting the letter
+        move_code = CODES[np.argmax(pred[0])]
+        window_width = 1200
+        window_height = 820
+        cv2.namedWindow('Frame', cv2.WINDOW_NORMAL)
+        cv2.resizeWindow('Frame', window_width, window_height)
 
-CODES[27]="del"
-CODES[28]="space"
+        ret, frame = img.read()
 
-start = time.time()
-end = time.time()
-final=""
-check = 0.0
-words=[]
-prev_move="del"
-while True:
-    font = cv2.FONT_HERSHEY_SIMPLEX
-    ret, frame = img.read()
-    frame = cv2.flip(frame, 1)
+        frame = cv2.flip(frame, 1)
+        frame = cv2.rectangle(frame, (60, 100), (310, 350), (0, 0, 255), 3)
 
+        #displaying our prediction
+        cv2.putText(frame,  "Letter : {}".format(move_code), (63, 320),
+                font, 1, (0, 0, 0), 2, cv2.LINE_AA)
 
-    frame = cv2.rectangle(frame, (60, 100), (310, 350), (0, 0, 255), 3)
-    frame2 = frame[100:350, 60:310]
-    image = cv2.cvtColor(frame2, cv2.COLOR_BGR2RGB)
-    image = cv2.resize(image, (50, 50))
-    pred = model.predict(np.array([image]))
-    #image_array = np.asarray(frame2)
-    #normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
-    #data[0] = normalized_image_array
-    #pred = model.predict(data)
+        if cv2.waitKey(1) & 0xff == ord('q'):
+            exit = True
+            break
+        if(exit):
+            break
+        cv2.imshow('Frame', frame)
 
+    img.release()
+    cv2.destroyAllWindows()
 
-    move_code = CODES[np.argmax(pred[0])]
-    '''
-    if(prev_move==move_code):
-        end=time.time()
-        if(int(end-start)>2):
-            if (move_code=="space"):
-                final=''.join(words)
-                print("\n",''.join(words))
-                words = []
-            elif(move_code=="del"):
-                words=words[:-1]
-            elif (move_code!="nothing"):
-                words.append(move_code)
-            start=time.time()
-    cv2.putText(frame,  "Letter : {}".format(final), (200, 200),font, 1, (0, 0, 0), 2, cv2.LINE_AA)
-                    
-    prev_move = move_code
-    '''
-    gate = 1
-    window_width = 1200
-    window_height = 820
-    cv2.namedWindow('Frame', cv2.WINDOW_NORMAL)
-    cv2.resizeWindow('Frame', window_width, window_height)
+if __name__=="__main__":
+    main()
 
-    ret, frame = img.read()
-
-    frame = cv2.flip(frame, 1)
-    frame = cv2.rectangle(frame, (60, 100), (310, 350), (0, 0, 255), 3)
-    cv2.putText(frame,  "Letter : {}".format(move_code), (63, 320),
-            font, 1, (0, 0, 0), 2, cv2.LINE_AA)
-
-
-    result = cv2.imread(s[3])
-    if cv2.waitKey(1) & 0xff == ord('q'):
-        exit = True
-        break
-    if(exit):
-        break
-    cv2.imshow('Frame', frame)
-
-
-
-img.release()
-cv2.destroyAllWindows()
